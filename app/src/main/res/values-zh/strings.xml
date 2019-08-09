@@ -3,7 +3,7 @@
     <string name="app_title">Pico应用安装助手</string>
     <string name="apk_not_found">未扫描到apk，请确认apk放置路径正确</string>
     <string name="installing_no_operation">安装中，请勿执行其他操作</string>
-    <string name="apk_delete_success">安装包删除成功</string>
+    <string name="apk_delete_success">apk删除成功</string>
     <string name="apk_delete_failed">apk删除失败</string>
     <string name="installation_completed">安装结束</string>
     <string name="installation_progress">安装进度：</string>

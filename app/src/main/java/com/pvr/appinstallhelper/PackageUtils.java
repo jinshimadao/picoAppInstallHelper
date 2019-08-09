@@ -1,34 +1,15 @@
 package com.pvr.appinstallhelper;
 
-import android.app.Activity;
-import android.content.ComponentName;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.IPackageInstallObserver;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.pm.ResolveInfo;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
-import android.opengl.GLES20;
 import android.os.RemoteException;
-import android.text.TextUtils;
 import android.util.Log;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -38,9 +19,11 @@ public class PackageUtils {
     private static ExecutorService mInstaller = Executors.newFixedThreadPool(1);
 
     private PackageManager mPackageManager;
+    public Context mContext;
 
     private PackageUtils(Context context) {
         mPackageManager = context.getPackageManager();
+        mContext = context;
     }
 
     private static PackageUtils instance = null;
@@ -150,24 +133,24 @@ public class PackageUtils {
         public void allAppInstallFinish();
     }
 
-    public static String installStatusToString(int status) {
+    public String installStatusToString(int status) {
         switch (status) {
             case INSTALL_SUCCEEDED:
-                return "安装成功";
+                return mContext.getString(R.string.install_succeeded);
             case INSTALL_FAILED_ALREADY_EXISTS:
-                return "安装失败，应用已存在";
+                return mContext.getString(R.string.install_failed_already_exists);
             case INSTALL_FAILED_INVALID_APK:
                 return "INSTALL_FAILED_INVALID_APK";
             case INSTALL_FAILED_INVALID_URI:
                 return "INSTALL_FAILED_INVALID_URI";
             case INSTALL_FAILED_INSUFFICIENT_STORAGE:
-                return "安装失败，设备空间不足";
+                return mContext.getString(R.string.install_failed_insufficient_storage);
             case INSTALL_FAILED_DUPLICATE_PACKAGE:
                 return "INSTALL_FAILED_DUPLICATE_PACKAGE";
             case INSTALL_FAILED_NO_SHARED_USER:
                 return "INSTALL_FAILED_NO_SHARED_USER";
             case INSTALL_FAILED_UPDATE_INCOMPATIBLE:
-                return "安装失败，应用签名不一致";
+                return mContext.getString(R.string.install_failed_update_incompatible);
             case INSTALL_FAILED_SHARED_USER_INCOMPATIBLE:
                 return "INSTALL_FAILED_SHARED_USER_INCOMPATIBLE";
             case INSTALL_FAILED_MISSING_SHARED_LIBRARY:
@@ -201,9 +184,9 @@ public class PackageUtils {
             case INSTALL_FAILED_PACKAGE_CHANGED:
                 return "INSTALL_FAILED_PACKAGE_CHANGED";
             case INSTALL_FAILED_UID_CHANGED:
-                return "安装失败，应用UID发生了改变";
+                return mContext.getString(R.string.install_failed_uid_changed);
             case INSTALL_FAILED_VERSION_DOWNGRADE:
-                return "安装失败，当前设备已经安装了更高版本的应用";
+                return mContext.getString(R.string.install_failed_version_downgrade);
             case INSTALL_PARSE_FAILED_NOT_APK:
                 return "INSTALL_PARSE_FAILED_NOT_APK";
             case INSTALL_PARSE_FAILED_BAD_MANIFEST:

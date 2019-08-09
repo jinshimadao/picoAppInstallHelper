@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="#adadad"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <TextView
@@ -14,18 +14,22 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="8dp"
-        android:text="Pico应用安装助手"
-        android:textSize="25sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="@string/app_title"
+        android:textSize="25sp" />
 
     <LinearLayout
+        android:id="@+id/ll_menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginLeft="10dp"
         android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="@string/selete_apk_path" />
 
         <RadioGroup
             android:id="@+id/rg_apk_source"
@@ -39,17 +43,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="从内部存储安装" />
+                android:text="@string/internal_storage" />
 
             <RadioButton
                 android:id="@+id/rb_external"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="从外置sd卡安装" />
+                android:text="@string/external_sdcard" />
 
 
         </RadioGroup>
+
+        <CheckBox
+            android:id="@+id/cb_deleteapk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="@string/delete_installed_apk" />
 
         <Button
             android:id="@+id/btn_click_install"
@@ -57,14 +68,54 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:text="点击安装" />
+            android:text="@string/click_scan" />
+
     </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="确保apk放置在外置sd卡或内部存储根目录的apk文件夹中" />
+        android:text="@string/apk_path_hint" />
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <LinearLayout
+            android:id="@+id/ll_installing_hint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.wang.avi.AVLoadingIndicatorView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="320dp"
+                app:indicatorColor="@color/color_PacmanIndicator"
+                app:indicatorName="PacmanIndicator" />
+
+            <TextView
+                android:id="@+id/tv_install_progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="@string/installation_progress" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_install_summary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/installation_completed"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
 
     <ScrollView
         android:id="@+id/sv_content"
@@ -74,17 +125,28 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
-        android:padding="5dp"
+        android:background="@drawable/scrollview_bg_border"
         android:fadeScrollbars="false"
-        android:background="@drawable/scrollview_bg_border">
+        android:fillViewport="true"
+        android:padding="5dp">
 
-        <TextView
-            android:id="@+id/tv_install_result"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
+            <TextView
+                android:id="@+id/tv_none_apk_found"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text=""
+                android:visibility="gone" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_app_installation"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp"></android.support.v7.widget.RecyclerView>
+        </RelativeLayout>
     </ScrollView>
-
-
 </LinearLayout>

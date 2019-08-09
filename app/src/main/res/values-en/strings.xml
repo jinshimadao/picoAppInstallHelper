@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Pico Install Helper</string>
+    <string name="app_title">Pico Install Helper</string>
+    <string name="apk_not_found">APKs not found, make sure they are placed in correct path </string>
+    <string name="installing_no_operation">Installing, please wait...</string>
+    <string name="apk_delete_success">deleted successfully</string>
+    <string name="apk_delete_failed">deleted failed</string>
+    <string name="installation_completed">Installation completed</string>
+    <string name="installation_progress">Progress ：</string>
+    <string name="scan_dialog_info">Scan result : \n\nFind %1$s APKs, total size %2$s\nDevice available memory %3$s</string>
+    <string name="install">Install</string>
+    <string name="cancel">Cancle</string>
+    <string name="install_result_summary">The installation over, attempt to install %1$d APKs, %2$d succeed, %3$d fail</string>
+    <string name="selete_apk_path">Select APK location：</string>
+    <string name="internal_storage">Internal Storage</string>
+    <string name="external_sdcard">External SDCard</string>
+    <string name="click_scan">Scan</string>
+    <string name="apk_path_hint">Place APKs in folder named APK which is in the root directory of external or internal storage </string>
+    <string name="delete_installed_apk">Delete installed APK</string>
+
+    <string name="install_failed_already_exists">APK installed failed, reason: INSTALL_FAILED_ALREADY_EXISTS</string>
+    <string name="install_succeeded">APK installed successfully</string>
+    <string name="install_failed_insufficient_storage">APK installed failed, reason: INSTALL_FAILED_INSUFFICIENT_STORAGE</string>
+    <string name="install_failed_update_incompatible">APK installed failed, reason: INSTALL_FAILED_UPDATE_INCOMPATIBLE</string>
+    <string name="install_failed_version_downgrade">APK installed failed, reason: INSTALL_FAILED_VERSION_DOWNGRADE</string>
+    <string name="install_failed_uid_changed">APK installed failed, reason: INSTALL_FAILED_UID_CHANGED</string>
+</resources>

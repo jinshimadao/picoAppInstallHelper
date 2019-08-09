@@ -130,6 +130,29 @@ public class SdCardUtils {
         return path;
     }
 
+    public static String getApkPath(Context context, String apkName) {
+        switch (GET_APK_PATH) {
+            case GET_APK_FROM_EXTERNAL_STORAGE:
+                Log.i(TAG, "apk 地址为：" + getExternalSdCardPath(context) + APPS_PATH + "/" + apkName);
+                return getExternalSdCardPath(context) + APPS_PATH + "/" + apkName;
+            case GET_APK_FROM_SDCARD:
+                return getSdCardPath() + APPS_PATH + "/" + apkName;
+            default:
+                return getSdCardPath() + APPS_PATH + "/" + apkName;
+        }
+    }
+    public static String getApkDir(Context context) {
+        switch (GET_APK_PATH) {
+            case GET_APK_FROM_EXTERNAL_STORAGE:
+                Log.i(TAG, "apk 地址为：" + getExternalSdCardPath(context) + APPS_PATH);
+                return getExternalSdCardPath(context) + APPS_PATH ;
+            case GET_APK_FROM_SDCARD:
+                return getSdCardPath() + APPS_PATH;
+            default:
+                return getSdCardPath() + APPS_PATH;
+        }
+    }
+
     public static List<String> getApksPath(Context context) {
         List<String> paths = new ArrayList<String>();
         Log.i(TAG, "GET_APK_PATH----->" + GET_APK_PATH);
